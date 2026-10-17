@@ -11,8 +11,8 @@ const progressBar = $('progressBar');
 const toastNode = $('toast');
 const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isInAppBrowser = /WhatsApp|FBAN|FBAV|Instagram|Line\/|TikTok|GSA\//i.test(navigator.userAgent);
-const EXTERIOR_USDZ = './assets/ar/architecture-exterior.usdz';
-const INTERIOR_USDZ = './assets/ar/architecture-interior.usdz';
+const EXTERIOR_USDZ = './architecture-exterior.usdz';
+const INTERIOR_USDZ = './architecture-interior.usdz';
 let toastTimer = 0;
 function toast(message, duration=3200) {
   toastNode.textContent = message;
