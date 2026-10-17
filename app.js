@@ -249,7 +249,7 @@ function setupARChoices() {
   if (isIOS) {
     $('iosARLink').hidden = false;
     $('webXRButton').hidden = true;
-    if (isARInIOSInAppBrowser()) $('browserWarning').hidden = false;
+    $('browserWarning').hidden = false;
     $('gestureHint').textContent = 'Drag to orbit · Tap the image to open AR';
   } else {
     $('iosARLink').hidden = true;
