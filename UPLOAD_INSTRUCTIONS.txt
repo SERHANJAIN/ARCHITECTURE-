@@ -1,0 +1,15 @@
+MICRO LIBRARY — MISSING AR ASSETS
+
+Your current GitHub Pages index.html links to:
+  assets/ar/architecture-exterior.usdz
+  assets/ar/architecture-interior.usdz
+
+Those paths are missing from the live repository. Do not replace the whole website.
+Add these two files to the repository while preserving the paths shown above.
+
+In GitHub, use Add file → Upload files. Upload both files into an assets/ar/ folder (create the folders first if needed), then commit.
+After deployment, verify these URLs no longer return 404:
+  https://serhanjain.github.io/ARCHITECTURE-/assets/ar/architecture-exterior.usdz
+  https://serhanjain.github.io/ARCHITECTURE-/assets/ar/architecture-interior.usdz
+
+Open the website directly in Safari on iPhone. The asset fix removes the missing-file blocker; the actual placement workflow still needs on-device confirmation.
