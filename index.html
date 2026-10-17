@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111715">
+  <meta name="description" content="Explore an architectural study in 3D and place it in your space with augmented reality.">
+  <title>Field Study — Architecture 01</title>
+  <link rel="stylesheet" href="./styles.css?v=20261017-rebuild">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <main id="app">
+    <div id="viewport" aria-label="Interactive three-dimensional architecture model"></div>
+    <header class="topbar">
+      <a class="wordmark" href="./" aria-label="Field Study home"><span class="mark">F</span><span><b>FIELD STUDY</b><small>ARCHITECTURE / 01</small></span></a>
+      <div class="status"><i id="statusDot"></i><span id="statusText">PREPARING MODEL</span></div>
+    </header>
+
+    <section class="intro" aria-label="Project introduction">
+      <p class="eyebrow">SPATIAL STUDY · 001</p>
+      <h1>Quiet form.<br><em>Open space.</em></h1>
+      <p class="intro-copy">Explore the architecture, reveal the interior, and study how light changes across the day.</p>
+    </section>
+
+    <section id="browserWarning" class="browser-warning" hidden aria-live="polite">
+      <b>Open in Safari for iPhone AR</b>
+      <span>AR Quick Look is not reliable inside WhatsApp and other in-app browsers. Use Share → Open in Safari, then return to this page.</span>
+    </section>
+
+    <section class="control-panel" aria-label="Model controls">
+      <div class="panel-head"><span>MODEL CONTROLS</span><span id="modeLabel">EXTERIOR</span></div>
+      <div class="control-grid">
+        <button id="interiorBtn" class="control" type="button" disabled><span class="control-icon">⌂</span><span id="interiorLabel">Reveal interior</span></button>
+        <button id="lightBtn" class="control" type="button" aria-expanded="false" aria-controls="lightPanel"><span class="control-icon">☼</span><span>Sunlight</span></button>
+        <button id="finishBtn" class="control" type="button" aria-expanded="false" aria-controls="finishPanel"><span class="control-icon">◉</span><span>Finish</span></button>
+        <button id="resetBtn" class="control" type="button" disabled><span class="control-icon">↺</span><span>Reset view</span></button>
+      </div>
+      <div id="lightPanel" class="subpanel" hidden>
+        <div class="subpanel-title"><label for="sunTime">SUN POSITION</label><output id="sunTimeOutput" for="sunTime">10:00</output></div>
+        <input id="sunTime" type="range" min="0" max="24" step="0.25" value="10" aria-label="Time of day">
+        <div class="range-labels"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+        <p id="sunCaption">MORNING LIGHT</p>
+      </div>
+      <div id="finishPanel" class="subpanel" hidden>
+        <div class="subpanel-title"><label for="customColor">MODEL FINISH</label><span>SELECT A TONE</span></div>
+        <div class="color-row">
+          <input id="customColor" type="color" value="#f4f1e9" aria-label="Custom model colour">
+          <div class="swatches" aria-label="Suggested finishes">
+            <button type="button" data-color="#f4f1e9" class="swatch selected" aria-label="Warm white" title="Warm white"></button>
+            <button type="button" data-color="#c9d6c5" class="swatch" aria-label="Sage" title="Sage"></button>
+            <button type="button" data-color="#d8b29a" class="swatch" aria-label="Terracotta" title="Terracotta"></button>
+            <button type="button" data-color="#aabfe2" class="swatch" aria-label="Powder blue" title="Powder blue"></button>
+            <button type="button" data-color="#454b55" class="swatch" aria-label="Graphite" title="Graphite"></button>
+          </div>
+        </div>
+        <p class="finish-note">Finish changes apply to the 3D study. Apple AR uses the prepared white model for reliable placement.</p>
+      </div>
+      <div class="panel-foot"><span id="gestureHint">Drag to orbit · Pinch to zoom</span><span>3D / AR</span></div>
+    </section>
+
+    <a id="iosARLink" class="ar-link" rel="ar" href="./assets/ar/architecture-exterior.usdz" aria-label="View this architecture in augmented reality" hidden>
+      <img src="./assets/images/ar-launch.png" width="960" height="160" alt="View in your space — Apple AR Quick Look">
+    </a>
+    <button id="webXRButton" class="webxr-button" type="button" hidden>VIEW IN AR <span>↗</span></button>
+    <button id="placeAgainButton" class="place-again" type="button" hidden>PLACE AGAIN ↗</button>
+    <div id="arHint" class="ar-hint" hidden>Move your phone slowly to find a surface, then tap to place.</div>
+
+    <div id="loading" class="loading">
+      <div class="loading-symbol">F.</div><b id="loadingTitle">Preparing your study</b><span id="loadingMessage">Loading model geometry…</span>
+      <div class="progress"><i id="progressBar"></i></div>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="compatModal" class="modal" hidden>
+      <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <p class="eyebrow">AR COMPATIBILITY</p><h2 id="modalTitle">AR isn't available here.</h2>
+        <p id="modalBody">The 3D model still works in this browser. On iPhone, open this site in Safari and use the Apple AR button.</p>
+        <button id="closeModal" type="button">CONTINUE IN 3D <span>↗</span></button>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./app.js?v=20261017-rebuild"></script>
+</body>
+</html>
